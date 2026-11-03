@@ -32,6 +32,8 @@ Prompts:
 
 Avoid code here. Pretend you are explaining the idea to a friend who does not program.
 
+The recommender looks at every song in the catalog one at a time and gives it points for how well it fits what the listener asked for. A song earns 2 points if its mood matches the listener's favorite mood and 1 point if its genre matches. It also earns up to 2 points for energy: the closer the song's energy is to the level the listener wants, the more points it gets, and a song that is too calm or too intense loses points either way. Finally, it earns up to 1 point for how acoustic it sounds, compared with whether the listener prefers acoustic or electronic music. The maximum is 6 points. Each song also keeps a short list of reasons, such as "mood match", so the system can explain itself. Once every song has a score, the songs are sorted from highest to lowest and the top five are shown. I weighted mood above genre because mood describes how a song feels, while genre is only a label. This is a content-based system that runs from the command line, and it only looks at song attributes, not at what other listeners do.
+
 ---
 
 ## 4. Data  
