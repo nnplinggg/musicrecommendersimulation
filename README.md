@@ -160,6 +160,208 @@ The top result, *Sunrise City*, is pop and happy with energy close to the target
 
 ---
 
+## Evaluation Output
+
+Output of `python -m src.main`: three realistic profiles, three adversarial ones, then the weight-shift experiment (energy weight doubled, genre weight halved). The comparison and analysis are in the Evaluation section of [model_card.md](model_card.md).
+
+```
+Loaded songs: 18
+
+=== High-Energy Pop ===
+Profile: {'genre': 'pop', 'mood': 'happy', 'energy': 0.85, 'likes_acoustic': False}
+1. Sunrise City (pop, happy)  -  5.92 / 6.00
+     - mood match (+2.0)
+     - energy 0.82 vs target 0.85 (+1.94)
+     - genre match (+1.0)
+     - acousticness 0.18 vs target 0.20 (+0.98)
+2. Rooftop Lights (indie pop, happy)  -  4.67 / 6.00
+     - mood match (+2.0)
+     - energy 0.76 vs target 0.85 (+1.82)
+     - acousticness 0.35 vs target 0.20 (+0.85)
+3. Gym Hero (pop, intense)  -  3.69 / 6.00
+     - energy 0.93 vs target 0.85 (+1.84)
+     - genre match (+1.0)
+     - acousticness 0.05 vs target 0.20 (+0.85)
+4. Night Drive Loop (synthwave, moody)  -  2.78 / 6.00
+     - energy 0.75 vs target 0.85 (+1.80)
+     - acousticness 0.22 vs target 0.20 (+0.98)
+5. Concrete Crown (hip hop, confident)  -  2.78 / 6.00
+     - energy 0.78 vs target 0.85 (+1.86)
+     - acousticness 0.12 vs target 0.20 (+0.92)
+
+=== Chill Lofi ===
+Profile: {'genre': 'lofi', 'mood': 'chill', 'energy': 0.4, 'likes_acoustic': True}
+1. Midnight Coding (lofi, chill)  -  5.87 / 6.00
+     - mood match (+2.0)
+     - energy 0.42 vs target 0.40 (+1.96)
+     - genre match (+1.0)
+     - acousticness 0.71 vs target 0.80 (+0.91)
+2. Library Rain (lofi, chill)  -  5.84 / 6.00
+     - mood match (+2.0)
+     - energy 0.35 vs target 0.40 (+1.90)
+     - genre match (+1.0)
+     - acousticness 0.86 vs target 0.80 (+0.94)
+3. Spacewalk Thoughts (ambient, chill)  -  4.64 / 6.00
+     - mood match (+2.0)
+     - energy 0.28 vs target 0.40 (+1.76)
+     - acousticness 0.92 vs target 0.80 (+0.88)
+4. Focus Flow (lofi, focused)  -  3.98 / 6.00
+     - energy 0.40 vs target 0.40 (+2.00)
+     - genre match (+1.0)
+     - acousticness 0.78 vs target 0.80 (+0.98)
+5. Coffee Shop Stories (jazz, relaxed)  -  2.85 / 6.00
+     - energy 0.37 vs target 0.40 (+1.94)
+     - acousticness 0.89 vs target 0.80 (+0.91)
+
+=== Deep Intense Rock ===
+Profile: {'genre': 'rock', 'mood': 'intense', 'energy': 0.92, 'likes_acoustic': False}
+1. Storm Runner (rock, intense)  -  5.88 / 6.00
+     - mood match (+2.0)
+     - energy 0.91 vs target 0.92 (+1.98)
+     - genre match (+1.0)
+     - acousticness 0.10 vs target 0.20 (+0.90)
+2. Gym Hero (pop, intense)  -  4.83 / 6.00
+     - mood match (+2.0)
+     - energy 0.93 vs target 0.92 (+1.98)
+     - acousticness 0.05 vs target 0.20 (+0.85)
+3. Sunrise City (pop, happy)  -  2.78 / 6.00
+     - energy 0.82 vs target 0.92 (+1.80)
+     - acousticness 0.18 vs target 0.20 (+0.98)
+4. Neon Pulse (edm, euphoric)  -  2.75 / 6.00
+     - energy 0.96 vs target 0.92 (+1.92)
+     - acousticness 0.03 vs target 0.20 (+0.83)
+5. Iron Cathedral (metal, aggressive)  -  2.74 / 6.00
+     - energy 0.97 vs target 0.92 (+1.90)
+     - acousticness 0.04 vs target 0.20 (+0.84)
+
+=== Conflicting: sad but high energy ===
+Profile: {'genre': 'folk', 'mood': 'sad', 'energy': 0.9, 'likes_acoustic': True}
+1. Porch Lullaby (folk, sad)  -  4.67 / 6.00
+     - mood match (+2.0)
+     - energy 0.30 vs target 0.90 (+0.80)
+     - genre match (+1.0)
+     - acousticness 0.93 vs target 0.80 (+0.87)
+2. Dust Road Anthem (country, nostalgic)  -  2.55 / 6.00
+     - energy 0.68 vs target 0.90 (+1.56)
+     - acousticness 0.81 vs target 0.80 (+0.99)
+3. Storm Runner (rock, intense)  -  2.28 / 6.00
+     - energy 0.91 vs target 0.90 (+1.98)
+     - acousticness 0.10 vs target 0.80 (+0.30)
+4. Rooftop Lights (indie pop, happy)  -  2.27 / 6.00
+     - energy 0.76 vs target 0.90 (+1.72)
+     - acousticness 0.35 vs target 0.80 (+0.55)
+5. Sunrise City (pop, happy)  -  2.22 / 6.00
+     - energy 0.82 vs target 0.90 (+1.84)
+     - acousticness 0.18 vs target 0.80 (+0.38)
+
+=== Missing genre and mood: classical ===
+Profile: {'genre': 'opera', 'mood': 'serene', 'energy': 0.2, 'likes_acoustic': True}
+1. Moonlit Sonata Remix (classical, melancholy)  -  2.79 / 6.00
+     - energy 0.22 vs target 0.20 (+1.96)
+     - acousticness 0.97 vs target 0.80 (+0.83)
+2. Spacewalk Thoughts (ambient, chill)  -  2.72 / 6.00
+     - energy 0.28 vs target 0.20 (+1.84)
+     - acousticness 0.92 vs target 0.80 (+0.88)
+3. Porch Lullaby (folk, sad)  -  2.67 / 6.00
+     - energy 0.30 vs target 0.20 (+1.80)
+     - acousticness 0.93 vs target 0.80 (+0.87)
+4. Library Rain (lofi, chill)  -  2.64 / 6.00
+     - energy 0.35 vs target 0.20 (+1.70)
+     - acousticness 0.86 vs target 0.80 (+0.94)
+5. Focus Flow (lofi, focused)  -  2.58 / 6.00
+     - energy 0.40 vs target 0.20 (+1.60)
+     - acousticness 0.78 vs target 0.80 (+0.98)
+
+=== Middle of the road ===
+Profile: {'genre': 'pop', 'mood': 'happy', 'energy': 0.5, 'likes_acoustic': False}
+1. Sunrise City (pop, happy)  -  5.34 / 6.00
+     - mood match (+2.0)
+     - energy 0.82 vs target 0.50 (+1.36)
+     - genre match (+1.0)
+     - acousticness 0.18 vs target 0.20 (+0.98)
+2. Rooftop Lights (indie pop, happy)  -  4.33 / 6.00
+     - mood match (+2.0)
+     - energy 0.76 vs target 0.50 (+1.48)
+     - acousticness 0.35 vs target 0.20 (+0.85)
+3. Gym Hero (pop, intense)  -  2.99 / 6.00
+     - energy 0.93 vs target 0.50 (+1.14)
+     - genre match (+1.0)
+     - acousticness 0.05 vs target 0.20 (+0.85)
+4. Velvet Hours (r&b, romantic)  -  2.76 / 6.00
+     - energy 0.52 vs target 0.50 (+1.96)
+     - acousticness 0.40 vs target 0.20 (+0.80)
+5. Night Drive Loop (synthwave, moody)  -  2.48 / 6.00
+     - energy 0.75 vs target 0.50 (+1.50)
+     - acousticness 0.22 vs target 0.20 (+0.98)
+
+######## EXPERIMENT: energy weight x2, genre weight x0.5 ########
+
+=== High-Energy Pop ===
+Profile: {'genre': 'pop', 'mood': 'happy', 'energy': 0.85, 'likes_acoustic': False}
+1. Sunrise City (pop, happy)  -  7.36 / 7.50
+     - mood match (+2.0)
+     - energy 0.82 vs target 0.85 (+3.88)
+     - genre match (+0.5)
+     - acousticness 0.18 vs target 0.20 (+0.98)
+2. Rooftop Lights (indie pop, happy)  -  6.49 / 7.50
+     - mood match (+2.0)
+     - energy 0.76 vs target 0.85 (+3.64)
+     - acousticness 0.35 vs target 0.20 (+0.85)
+3. Gym Hero (pop, intense)  -  5.03 / 7.50
+     - energy 0.93 vs target 0.85 (+3.68)
+     - genre match (+0.5)
+     - acousticness 0.05 vs target 0.20 (+0.85)
+4. Storm Runner (rock, intense)  -  4.66 / 7.50
+     - energy 0.91 vs target 0.85 (+3.76)
+     - acousticness 0.10 vs target 0.20 (+0.90)
+5. Concrete Crown (hip hop, confident)  -  4.64 / 7.50
+     - energy 0.78 vs target 0.85 (+3.72)
+     - acousticness 0.12 vs target 0.20 (+0.92)
+
+=== Deep Intense Rock ===
+Profile: {'genre': 'rock', 'mood': 'intense', 'energy': 0.92, 'likes_acoustic': False}
+1. Storm Runner (rock, intense)  -  7.36 / 7.50
+     - mood match (+2.0)
+     - energy 0.91 vs target 0.92 (+3.96)
+     - genre match (+0.5)
+     - acousticness 0.10 vs target 0.20 (+0.90)
+2. Gym Hero (pop, intense)  -  6.81 / 7.50
+     - mood match (+2.0)
+     - energy 0.93 vs target 0.92 (+3.96)
+     - acousticness 0.05 vs target 0.20 (+0.85)
+3. Neon Pulse (edm, euphoric)  -  4.67 / 7.50
+     - energy 0.96 vs target 0.92 (+3.84)
+     - acousticness 0.03 vs target 0.20 (+0.83)
+4. Iron Cathedral (metal, aggressive)  -  4.64 / 7.50
+     - energy 0.97 vs target 0.92 (+3.80)
+     - acousticness 0.04 vs target 0.20 (+0.84)
+5. Sunrise City (pop, happy)  -  4.58 / 7.50
+     - energy 0.82 vs target 0.92 (+3.60)
+     - acousticness 0.18 vs target 0.20 (+0.98)
+
+=== Conflicting: sad but high energy ===
+Profile: {'genre': 'folk', 'mood': 'sad', 'energy': 0.9, 'likes_acoustic': True}
+1. Porch Lullaby (folk, sad)  -  4.97 / 7.50
+     - mood match (+2.0)
+     - energy 0.30 vs target 0.90 (+1.60)
+     - genre match (+0.5)
+     - acousticness 0.93 vs target 0.80 (+0.87)
+2. Storm Runner (rock, intense)  -  4.26 / 7.50
+     - energy 0.91 vs target 0.90 (+3.96)
+     - acousticness 0.10 vs target 0.80 (+0.30)
+3. Gym Hero (pop, intense)  -  4.13 / 7.50
+     - energy 0.93 vs target 0.90 (+3.88)
+     - acousticness 0.05 vs target 0.80 (+0.25)
+4. Dust Road Anthem (country, nostalgic)  -  4.11 / 7.50
+     - energy 0.68 vs target 0.90 (+3.12)
+     - acousticness 0.81 vs target 0.80 (+0.99)
+5. Sunrise City (pop, happy)  -  4.06 / 7.50
+     - energy 0.82 vs target 0.90 (+3.68)
+     - acousticness 0.18 vs target 0.80 (+0.38)
+```
+
+---
+
 ## Experiments You Tried
 
 Use this section to document the experiments you ran. For example:
